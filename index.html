@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkillCraft | Landing Page</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    color:white;
+    overflow-x:hidden;
+}
+
+/* NAVBAR */
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    background:rgba(0,0,0,0.45);
+    backdrop-filter:blur(12px);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 50px;
+    z-index:1000;
+}
+
+nav h2{
+    color:#00eaff;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:30px;
+}
+
+nav ul li{
+    cursor:pointer;
+}
+
+nav ul li:hover{
+    color:#00eaff;
+}
+
+/* MAIN */
+.container{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+}
+
+.section{
+    display:none;
+    animation:fadeIn 0.8s ease;
+}
+
+.section.active{
+    display:block;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(30px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* HEADINGS */
+.section h1{
+    color:#00eaff;
+    font-size:3rem;
+    margin-bottom:15px;
+}
+
+/* HOME */
+.home p{
+    max-width:650px;
+    margin:0 auto 30px;
+    font-size:1.2rem;
+    color:#e0e0e0;
+}
+
+.home button{
+    padding:12px 35px;
+    border:none;
+    border-radius:30px;
+    background:#00eaff;
+    cursor:pointer;
+}
+
+.home button:hover{
+    box-shadow:0 0 25px #00eaff;
+}
+
+/* CARD */
+.card{
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(15px);
+    padding:35px;
+    border-radius:22px;
+    max-width:720px;
+    margin:auto;
+}
+
+/* SERVICES */
+.services-container{
+    display:flex;
+    gap:25px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-top:30px;
+}
+
+.service-box{
+    width:200px;
+    padding:25px;
+    border-radius:18px;
+    background:rgba(255,255,255,0.12);
+}
+
+.service-box:hover{
+    background:rgba(0,234,255,0.25);
+}
+
+/* CONTACT */
+.contact input,.contact textarea{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:none;
+    border-radius:12px;
+}
+
+.contact button{
+    margin-top:10px;
+    padding:12px 30px;
+    border:none;
+    border-radius:25px;
+    background:#00eaff;
+    cursor:pointer;
+}
+
+.error{
+    color:#ff6b6b;
+    margin-top:10px;
+    font-size:0.95rem;
+}
+
+/* FOOTER */
+footer{
+    position:fixed;
+    bottom:0;
+    width:100%;
+    text-align:center;
+    padding:12px;
+    background:rgba(0,0,0,0.4);
+    font-size:0.9rem;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <h2>SkillCraft</h2>
+    <ul>
+        <li onclick="showSection('home')">Home</li>
+        <li onclick="showSection('about')">About</li>
+        <li onclick="showSection('services')">Services</li>
+        <li onclick="showSection('contact')">Contact</li>
+    </ul>
+</nav>
+
+<div class="container">
+
+    <!-- HOME -->
+    <div id="home" class="section home active">
+        <h1>Welcome to SkillCraft</h1>
+        <p>Empowering you with modern tech skills and innovation.</p>
+        <button onclick="showSection('about')">Get Started</button>
+    </div>
+
+    <!-- ABOUT -->
+    <div id="about" class="section">
+        <div class="card">
+            <h1>About</h1>
+            <p>We help students gain practical knowledge through real-world projects.</p>
+        </div>
+    </div>
+
+    <!-- SERVICES -->
+    <div id="services" class="section">
+        <h1>Our Services</h1>
+        <div class="services-container">
+            <div class="service-box">💻 Web Development</div>
+            <div class="service-box">🎨 UI / UX Design</div>
+            <div class="service-box">🤖 AI & ML</div>
+            <div class="service-box">🎓 Internships</div>
+        </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div id="contact" class="section">
+        <div class="card contact">
+            <h1>Contact</h1>
+
+            <input type="text" id="name" placeholder="Your Name">
+            <input type="email" id="email" placeholder="Your Email">
+            <textarea id="message" rows="4" placeholder="Your Message"></textarea>
+
+            <div class="error" id="errorMsg"></div>
+
+            <button onclick="validateForm()">Send Message</button>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    © 2026 SkillCraft | Designed for Learning & Growth
+</footer>
+
+<script>
+function showSection(id){
+    document.querySelectorAll('.section').forEach(sec=>{
+        sec.classList.remove('active');
+    });
+    document.getElementById(id).classList.add('active');
+}
+
+function validateForm(){
+    const name=document.getElementById("name").value.trim();
+    const email=document.getElementById("email").value.trim();
+    const message=document.getElementById("message").value.trim();
+    const error=document.getElementById("errorMsg");
+
+    if(!name){
+        error.textContent="Please enter your name";
+        return;
+    }
+    if(!email){
+        error.textContent="Please enter your email";
+        return;
+    }
+    if(!message){
+        error.textContent="Please enter your message";
+        return;
+    }
+
+    error.textContent="Message sent successfully!";
+    error.style.color="#00eaff";
+}
+</script>
+
+</body>
+</html>
