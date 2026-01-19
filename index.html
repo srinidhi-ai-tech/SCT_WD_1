@@ -29,25 +29,22 @@ nav{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:12px 20px;
+    padding:15px 50px;
     z-index:1000;
 }
 
 nav h2{
-    color:#00eaff;
-    font-size:1.4rem;
+    color:#00c9e6; /* slightly darker than before */
 }
 
-/* NAV LINKS */
 nav ul{
     list-style:none;
     display:flex;
-    gap:25px;
+    gap:30px;
 }
 
 nav ul li{
     cursor:pointer;
-    font-size:0.95rem;
 }
 
 nav ul li:hover{
@@ -57,25 +54,23 @@ nav ul li:hover{
 /* HAMBURGER */
 .menu-toggle{
     display:none;
-    font-size:1.8rem;
+    font-size:28px;
     cursor:pointer;
-    color:#00eaff;
 }
 
-/* MAIN CONTAINER */
+/* MAIN */
 .container{
-    min-height:100vh;
+    height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
     text-align:center;
-    padding:100px 20px 60px;
+    padding:20px;
 }
 
 .section{
     display:none;
-    animation:fadeIn 0.6s ease;
-    width:100%;
+    animation:fadeIn 0.8s ease;
 }
 
 .section.active{
@@ -83,63 +78,76 @@ nav ul li:hover{
 }
 
 @keyframes fadeIn{
-    from{opacity:0; transform:translateY(20px);}
+    from{opacity:0; transform:translateY(30px);}
     to{opacity:1; transform:translateY(0);}
 }
 
 /* HEADINGS */
 .section h1{
-    color:#00eaff;
-    font-size:2.3rem;
-    margin-bottom:12px;
+    font-size:3.2rem;
+    margin-bottom:15px;
 }
 
 /* HOME */
+.home h1 span:first-child{
+    color:white; /* Welcome to */
+}
+
+.home h1 span:last-child{
+    color:#00c9e6; /* SkillCraft darker highlight */
+}
+
 .home p{
-    max-width:600px;
-    margin:0 auto 25px;
-    font-size:1.05rem;
+    max-width:650px;
+    margin:0 auto 30px;
+    font-size:1.2rem;
     color:#e0e0e0;
 }
 
 .home button{
-    padding:12px 32px;
+    padding:12px 35px;
     border:none;
     border-radius:30px;
     background:#00eaff;
     cursor:pointer;
-    font-weight:600;
 }
 
 .home button:hover{
-    box-shadow:0 0 20px #00eaff;
+    box-shadow:0 0 25px #00eaff;
 }
 
-/* CARD */
-.card{
-    background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(15px);
-    padding:28px;
-    border-radius:20px;
-    max-width:720px;
+/* ABOUT */
+.about{
+    margin-top:-40px; /* moved upward */
+}
+
+.about h1{
+    font-size:3.5rem;
+    color:#00eaff;
+    margin-bottom:20px;
+}
+
+.about p{
+    font-size:1.35rem;
+    max-width:750px;
     margin:auto;
+    color:#e0e0e0;
 }
 
 /* SERVICES */
 .services-container{
     display:flex;
-    gap:18px;
+    gap:25px;
     justify-content:center;
     flex-wrap:wrap;
-    margin-top:25px;
+    margin-top:30px;
 }
 
 .service-box{
-    width:180px;
-    padding:20px;
-    border-radius:16px;
+    width:200px;
+    padding:25px;
+    border-radius:18px;
     background:rgba(255,255,255,0.12);
-    font-size:0.95rem;
 }
 
 .service-box:hover{
@@ -147,80 +155,64 @@ nav ul li:hover{
 }
 
 /* CONTACT */
-.contact input,
-.contact textarea{
+.contact input,.contact textarea{
     width:100%;
     padding:12px;
     margin:10px 0;
     border:none;
-    border-radius:10px;
-    font-size:0.95rem;
+    border-radius:12px;
 }
 
 .contact button{
     margin-top:10px;
-    padding:12px 28px;
+    padding:12px 30px;
     border:none;
     border-radius:25px;
     background:#00eaff;
     cursor:pointer;
-    font-weight:600;
 }
 
 .error{
     color:#ff6b6b;
     margin-top:10px;
-    font-size:0.9rem;
+    font-size:0.95rem;
 }
 
 /* FOOTER */
 footer{
+    position:fixed;
+    bottom:0;
     width:100%;
     text-align:center;
     padding:12px;
     background:rgba(0,0,0,0.4);
-    font-size:0.85rem;
+    font-size:0.9rem;
 }
 
-/* MOBILE VIEW */
-@media (max-width: 768px){
-
-    .menu-toggle{
-        display:block;
+/* RESPONSIVE */
+@media(max-width:768px){
+    nav{
+        padding:15px 25px;
     }
 
     nav ul{
         position:absolute;
-        top:60px;
-        left:0;
-        width:100%;
-        background:rgba(0,0,0,0.95);
+        top:65px;
+        right:25px;
+        background:rgba(0,0,0,0.85);
         flex-direction:column;
-        align-items:center;
+        width:200px;
         display:none;
-        padding:20px 0;
+        padding:20px;
+        border-radius:15px;
     }
 
     nav ul.active{
         display:flex;
     }
 
-    nav ul li{
-        padding:15px 0;
-        font-size:1.05rem;
-    }
-
-    .section h1{
-        font-size:1.9rem;
-    }
-
-    .home p{
-        font-size:1rem;
-    }
-
-    .service-box{
-        width:100%;
-        max-width:260px;
+    .menu-toggle{
+        display:block;
     }
 }
 </style>
@@ -233,7 +225,7 @@ footer{
 
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
-    <ul id="nav-links">
+    <ul id="navMenu">
         <li onclick="showSection('home')">Home</li>
         <li onclick="showSection('about')">About</li>
         <li onclick="showSection('services')">Services</li>
@@ -245,22 +237,26 @@ footer{
 
     <!-- HOME -->
     <div id="home" class="section home active">
-        <h1>Welcome to SkillCraft</h1>
+        <h1>
+            <span>Welcome to </span>
+            <span>SkillCraft</span>
+        </h1>
         <p>Empowering you with modern tech skills and innovation.</p>
         <button onclick="showSection('about')">Get Started</button>
     </div>
 
     <!-- ABOUT -->
-    <div id="about" class="section">
-        <div class="card">
-            <h1>About</h1>
-            <p>We help students gain practical knowledge through real-world projects.</p>
-        </div>
+    <div id="about" class="section about">
+        <h1>About</h1>
+        <p>
+            We help students gain practical knowledge through real-world projects,
+            industry-oriented skills, and hands-on learning experiences.
+        </p>
     </div>
 
     <!-- SERVICES -->
     <div id="services" class="section">
-        <h1>Our Services</h1>
+        <h1 style="color:#00eaff;">Our Services</h1>
         <div class="services-container">
             <div class="service-box">💻 Web Development</div>
             <div class="service-box">🎨 UI / UX Design</div>
@@ -271,8 +267,8 @@ footer{
 
     <!-- CONTACT -->
     <div id="contact" class="section">
-        <div class="card contact">
-            <h1>Contact</h1>
+        <div class="contact">
+            <h1 style="color:#00eaff;">Contact</h1>
 
             <input type="text" id="name" placeholder="Your Name">
             <input type="email" id="email" placeholder="Your Email">
@@ -296,13 +292,11 @@ function showSection(id){
         sec.classList.remove('active');
     });
     document.getElementById(id).classList.add('active');
-
-    // close mobile menu after click
-    document.getElementById("nav-links").classList.remove("active");
+    document.getElementById("navMenu").classList.remove("active");
 }
 
 function toggleMenu(){
-    document.getElementById("nav-links").classList.toggle("active");
+    document.getElementById("navMenu").classList.toggle("active");
 }
 
 function validateForm(){
@@ -313,17 +307,14 @@ function validateForm(){
 
     if(!name){
         error.textContent="Please enter your name";
-        error.style.color="#ff6b6b";
         return;
     }
     if(!email){
         error.textContent="Please enter your email";
-        error.style.color="#ff6b6b";
         return;
     }
     if(!message){
         error.textContent="Please enter your message";
-        error.style.color="#ff6b6b";
         return;
     }
 
